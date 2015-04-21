@@ -23,7 +23,7 @@ public class DatabaseConnection {
 	public DatabaseConnection() {
 		//连接信息		 
 		String DBDRIVER = "com.mysql.jdbc.Driver";
-		String DBURL = "jdbc:mysql://localhost:3306/asidb";
+		String DBURL = "jdbc:mysql://localhost:3306/aisdb";
 		String DBUSER = "root";     
 		String DBPASSWORD = "123456";
 

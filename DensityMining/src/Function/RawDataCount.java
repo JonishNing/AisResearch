@@ -36,7 +36,7 @@ public class RawDataCount {
 	
 	public static void main(String[] args){
 		RawDataCount rd = new RawDataCount();
-		ResultSet rsResultSet = rd.getRawdata();
+		ResultSet rsResultSet = rd.getRawdataBymonth(1, 2);
 		int id = 0;
 		try {
 			while(rsResultSet.next()){

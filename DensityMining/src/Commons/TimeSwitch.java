@@ -11,9 +11,9 @@ public class TimeSwitch {
 	 * @param longitude
 	 * @return
 	 */
-	public Timestamp getLocalTime(Timestamp BeijingTimestamp , Double longitude){
+	public Timestamp getLocalTime(Timestamp BeijingTimestamp ,int longitude){
 		Timestamp currentTimestamp  = BeijingTimestamp;
-		if(longitude>180||longitude<-180){
+		if(longitude>180*600000||longitude<-180*600000){
 			System.out.println("longitude is error");
 			return null;
 		}
@@ -40,17 +40,18 @@ public class TimeSwitch {
 	 * @param longitude
 	 * @return
 	 */
-	public int getTimezone(double longitude){
+	public int getTimezone(int longitude){
 		int timezone = 0;
 		//四舍五入求时区
-		timezone = Integer.parseInt(new java.text.DecimalFormat("0").format(longitude/15));		
+		timezone = Integer.parseInt(new java.text.DecimalFormat("0").format(longitude/600000/15));		
 		return timezone;
 	}
+	
 	
 	public static void main(String[] args){
 		TimeSwitch timeSwitch = new TimeSwitch();
 		Timestamp tm = new Timestamp(115, 4, 14, 15, 30, 25, 0);
-		double longitude = 100;
+		int longitude = 100*600000;
 		int timezone = timeSwitch.getTimezone(longitude);
 		Timestamp currenttm = timeSwitch.getLocalTime(tm, longitude);
 		try {

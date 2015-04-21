@@ -40,7 +40,7 @@ public class DataFetch {
 	 * @param month
 	 * @return
 	 */
-	public List<AisDynamicRecord> getAisDynamicRecordsbyMonth(int year , int month){
+	public ArrayList<AisDynamicRecord> getAisDynamicRecordsbyMonth(int year , int month){
 		TimeSwitch ts = new TimeSwitch();
 		int start  = ts.getStartGPStime(year, month);
 		int end = ts.getEndGPStime(year, month);
@@ -88,7 +88,7 @@ public class DataFetch {
 			e.printStackTrace();
 		}
 		
-		return AISDYNAMICList;
+		return (ArrayList<AisDynamicRecord>)AISDYNAMICList;
 	}
 	
 	//航段信息部分
@@ -104,7 +104,7 @@ public class DataFetch {
 	Timestamp End_Date_Time = new Timestamp(0);
 	int Dynamic_Data_Count = 0;
 	
-	public List<Route_Segment> getRoute_SegmentList(int year , int month){
+	public ArrayList<Route_Segment> getRoute_SegmentList(int year , int month){
 		DateTime startDateTime = new DateTime(year,month,1,0,0,0); 
 		DateTime endDateTime = new DateTime(year, month+1, 1, 0, 0, 0);
 		Date startDate = startDateTime.toDate();
@@ -145,7 +145,7 @@ public class DataFetch {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return route_Segment_List;
+		return (ArrayList<Route_Segment>)route_Segment_List;
 	}
 
 

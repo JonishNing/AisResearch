@@ -28,8 +28,17 @@ public class DataFetch {
 	String Message = new String();
 	int Ais_Source = 0;
 	
-	public List<AisDynamicRecord> getAisDynamicRecords(){
-		
+	/**
+	 * 获取一个月内的所有原始数据
+	 * @param year
+	 * @param month
+	 * @return
+	 */
+	public List<AisDynamicRecord> getAisDynamicRecordsbyMonth(int year , int month){
+		TimeSwitch ts = new TimeSwitch();
+		int start  = ts.getStartGPStime(year, month);
+		int end = ts.getEndGPStime(year, month);
+		sql = sql + " where DRGPSTIME>"+start+" and "+" DRGPSTIME<"+end;
 		DatabaseConnection db = new DatabaseConnection();
 		ResultSet rs=db.executeQuery(sql);
 		
@@ -79,7 +88,7 @@ public class DataFetch {
 	public static void main(String args[]){
 		
 		DataFetch df = new DataFetch();
-		ArrayList<AisDynamicRecord> aislist = (ArrayList<AisDynamicRecord>)df.getAisDynamicRecords();
+		ArrayList<AisDynamicRecord> aislist = (ArrayList<AisDynamicRecord>)df.getAisDynamicRecordsbyMonth(2013, 4);
 		System.out.println("arraylist.size()="+aislist.size());
 	}
 }

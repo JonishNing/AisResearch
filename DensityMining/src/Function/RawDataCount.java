@@ -24,6 +24,7 @@ public class RawDataCount {
 		
 		String sql = "select * from aisdynamiclog where DRGPSTIME>="+startDate+" DRGPSTIME<="+endDate;
 		DatabaseConnection db= new DatabaseConnection();
+		System.out.println(sql);
 		ResultSet rs = db.executeQuery(sql);
 		return rs;
 	}

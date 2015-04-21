@@ -2,6 +2,7 @@ package Model;
 
 public class Density {
 	
+	
 	private int Day_Count;
 	private int Night_Count;
 	public int getDay_Count() {

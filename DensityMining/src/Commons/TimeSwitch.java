@@ -99,7 +99,10 @@ public class TimeSwitch {
 		Date tm = new Timestamp(115, 4, 14, 15, 30, 25, 0);
 		int longitude = 100*600000;
 		int timezone = timeSwitch.getTimezone(longitude);
-		Date currenttm = timeSwitch.getLocalTime(tm, longitude);
+		Date currenttm = timeSwitch.getLocalTime(tm, longitude);		
+		int Gps = 1388505626;
+		int hour = timeSwitch.GPStime2Hour(Gps);
+		System.out.println(hour);
 		try {
 			String bjtm = tm.toString();
 			System.out.println("北京时间："+bjtm);

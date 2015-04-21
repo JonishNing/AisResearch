@@ -62,7 +62,7 @@ public class TimeSwitch {
 		DateTime endDateTime = new DateTime(year, month+1, 1, 0, 0, 0);
 		Date startDate = startDateTime.toDate();
 		Date endDate = endDateTime.toDate();
-		int StartGPSTime =(int)startDate.getTime(); 
+		int StartGPSTime =(int)(startDate.getTime()/1000); 
 		return StartGPSTime; 
 	}
 	
@@ -81,7 +81,7 @@ public class TimeSwitch {
 	}
 	
 	/**
-	 * 根据GPS时间获得当天的点钟
+	 * 根据GPS时间获得当天的X点钟
 	 * @param GPSTime
 	 * @return
 	 */

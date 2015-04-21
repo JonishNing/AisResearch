@@ -3,10 +3,14 @@ package Commons;
 
 
 import java.sql.ResultSet;
+
 import Commons.TimeSwitch;
+
 import org.omg.CORBA.PUBLIC_MEMBER;
 
 import Model.AisRecord;
+import Model.Grid;
+import Model.GridIndex;
 
 public class DataAnalysis {
 	
@@ -36,6 +40,13 @@ public class DataAnalysis {
 		return rownum;
 	}
 	
+	/**
+	 * 判断白天或夜间
+	 * @param longitude
+	 * @param latitude
+	 * @param GPSTime
+	 * @return
+	 */
 	public int judge_dayornight(int longitude , int latitude, int GPSTime){
 		int period = 0;
 		TimeSwitch ts = new TimeSwitch();
@@ -47,6 +58,20 @@ public class DataAnalysis {
 			period = NIGHT_PERIOD;
 		}
 		return period;
+	}
+	
+	/**
+	 * 获得所在格子的左上经纬度
+	 * @param longitude
+	 * @param latitude
+	 * @return
+	 */
+	public GridIndex getGridIndex(int longitude, int latitude){
+		GridIndex gI = new GridIndex();
+		gI.setUpper_left_longitude(longitude - longitude%3000);
+		gI.setUpper_right_latitude(latitude - latitude%3000);
+		return gI;
+		
 	}
 		
 	

@@ -153,8 +153,8 @@ public class DataFetch {
 	public static void main(String args[]){
 		
 		DataFetch df = new DataFetch();
-//		ArrayList<AisDynamicRecord> aislist = (ArrayList<AisDynamicRecord>)df.getAisDynamicRecordsbyMonth(2013, 4);
-//		System.out.println("arraylist.size()="+aislist.size());
+		ArrayList<AisDynamicRecord> aislist = (ArrayList<AisDynamicRecord>)df.getAisDynamicRecordsbyMonth(2013, 4);
+		System.out.println("arraylist.size()="+aislist.size());
 		ArrayList<Route_Segment> rlist = (ArrayList<Route_Segment>)df.getRoute_SegmentList(2013, 4);
 		System.out.println("rlist.size()=" + rlist.size());
 		

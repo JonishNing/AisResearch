@@ -21,7 +21,7 @@ public class Analysis {
 			int current_end_longitude = r_s.getEnd_Longitude();
 			int current_start_latitude = r_s.getStart_Latitude();
 			int current_end_latitude = r_s.getEnd_Latitude();
-			//获得该条记录所经过的格子和在每个格子中停留的时间
+			//获得该条记录所经过的格子的左上角经纬度和在每个格子中停留的时间
 			{
 				//WHY
 			}

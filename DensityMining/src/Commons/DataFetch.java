@@ -18,7 +18,7 @@ public class DataFetch {
 	
 	//原始Ais数据部分
 	List<AisDynamicRecord> AISDYNAMICList = new ArrayList<AisDynamicRecord>();
-	String sql1 = "select * from aisdynamiclog";
+	String sql1 = "select DRGPSTIME,DRTERMINALCODE,DRLATITUDE,DRLONGITUDE from aisdynamiclog";
 	int GpsTime = 0;
 	String TerminalCode = new String();
 	int RecordType = 0;
@@ -55,32 +55,32 @@ public class DataFetch {
 				AisDynamicRecord ais = new AisDynamicRecord();
 				GpsTime = rs.getBigDecimal(1).intValue();
 				TerminalCode = rs.getString(2);
-				RecordType = rs.getBigDecimal(3).intValue();
-				Commtype = rs.getBigDecimal(4).intValue();
-				RcvTime = rs.getBigDecimal(5).intValue();
-				Latitude = rs.getBigDecimal(6).intValue();
-				Longitude = rs.getBigDecimal(7).intValue();
-				Direction = rs.getBigDecimal(8).intValue();
-				TrueHeading = rs.getBigDecimal(9).intValue();
-				Speed = rs.getBigDecimal(10).intValue();
-				Status = rs.getBigDecimal(11).intValue();
-				rot = rs.getBigDecimal(12).intValue();
-				Message = "unknown";
-				Ais_Source = rs.getBigDecimal(14).intValue();
+//				RecordType = rs.getBigDecimal(3).intValue();
+//				Commtype = rs.getBigDecimal(4).intValue();
+//				RcvTime = rs.getBigDecimal(5).intValue();
+				Latitude = rs.getBigDecimal(3).intValue();
+				Longitude = rs.getBigDecimal(4).intValue();
+//				Direction = rs.getBigDecimal(8).intValue();
+//				TrueHeading = rs.getBigDecimal(9).intValue();
+//				Speed = rs.getBigDecimal(10).intValue();
+//				Status = rs.getBigDecimal(11).intValue();
+//				rot = rs.getBigDecimal(12).intValue();
+//				Message = "unknown";
+//				Ais_Source = rs.getBigDecimal(14).intValue();
 				ais.setDRGPSTIME(GpsTime);
 				ais.setDRTERMINALCODE(TerminalCode);
-				ais.setDRRECORDTYPE(RecordType);
-				ais.setDRCOMMTYPE(Commtype);
-				ais.setDRRCVTIME(RcvTime);
+//				ais.setDRRECORDTYPE(RecordType);
+//				ais.setDRCOMMTYPE(Commtype);
+//				ais.setDRRCVTIME(RcvTime);
 				ais.setDRLATITUDE(Latitude);
 				ais.setDRLONGITUDE(Longitude);
-				ais.setDRDIRECTION(Direction);
-				ais.setDRTRUEHEADING(TrueHeading);
-				ais.setDRSPEED(Speed);
-				ais.setDRSTATUS(Status);
-				ais.setDRROT(rot);
-				ais.setDRMESSAGE(Message);
-				ais.setAIS_SOURCE(Ais_Source);
+//				ais.setDRDIRECTION(Direction);
+//				ais.setDRTRUEHEADING(TrueHeading);
+//				ais.setDRSPEED(Speed);
+//				ais.setDRSTATUS(Status);
+//				ais.setDRROT(rot);
+//				ais.setDRMESSAGE(Message);
+//				ais.setAIS_SOURCE(Ais_Source);
 				AISDYNAMICList.add(ais);
 			}
 		} catch (SQLException e) {
@@ -93,7 +93,7 @@ public class DataFetch {
 	
 	//航段信息部分
 	List<Route_Segment> route_Segment_List = new ArrayList<Route_Segment>();
-	String sql2 = "select * from l1_0_route_segment ";
+	String sql2 = "select ID,Ship_ID,Start_Longitude,Start_Latitude,Start_Datetime,End_Longitude,End_Latitude,End_Date_Time,Dynamic_Data_Count from l1_0_route_segment ";
 	int ID = 0;
 	int Ship_ID = 0;
 	int Start_Longitude = 0;

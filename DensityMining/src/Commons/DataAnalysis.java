@@ -74,6 +74,34 @@ public class DataAnalysis {
 		
 	}
 	
+
+	/**
+	 * 获取平均值
+	 * @param input
+	 * @param num
+	 * @return
+	 */
+    public double getAverage(int[] input ,int num){
+        int sum = 0;
+        for(int i = 0;i < num;i++){
+            sum += input[i];
+        }
+        return (double)(sum / num);
+    }
+    
+	/**
+	 * 获取标准差
+	 * @param input
+	 * @param num
+	 * @return
+	 */
+    public int getStandardDevition(int[] input , int num){
+        int sum = 0;
+        for(int i = 0;i < num;i++){
+            sum += Math.sqrt(((double)input[i] - getAverage(input ,num)) * (input[i] -getAverage(input ,num)));
+        }
+        return (sum / (num - 1));
+    }
 	
 
 }

@@ -92,6 +92,21 @@ public class TimeSwitch {
 		return hour_of_day;
 	}
 	
+	/**
+	 * 获得该月的天数
+	 * @param year
+	 * @param month
+	 * @return
+	 */
+	public int getDaysofMonth(int year , int month){
+		int days = 0;
+		
+		DateTime dateTime1 = new DateTime(year, month, 1, 0, 0, 0);
+		DateTime dateTime2 = new DateTime(year, month+1, 1, 0, 0, 0);
+		days = (int)((dateTime2.toDate().getTime() - dateTime1.toDate().getTime())/(1000*60*60*24));
+		return days;
+	}
+	
 	
 	
 	public static void main(String[] args){
@@ -112,6 +127,8 @@ public class TimeSwitch {
 			// TODO: handle exception
 			System.out.print("null timestamp!");
 		}
+		int days = timeSwitch.getDaysofMonth(2012, 2);
+		System.out.println("2013.04."+days);
 		
 
 

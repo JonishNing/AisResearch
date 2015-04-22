@@ -99,8 +99,7 @@ public class TimeSwitch {
 	 * @return
 	 */
 	public int getDaysofMonth(int year , int month){
-		int days = 0;
-		
+		int days = 0;		
 		DateTime dateTime1 = new DateTime(year, month, 1, 0, 0, 0);
 		DateTime dateTime2 = new DateTime(year, month+1, 1, 0, 0, 0);
 		days = (int)((dateTime2.toDate().getTime() - dateTime1.toDate().getTime())/(1000*60*60*24));

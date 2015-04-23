@@ -15,7 +15,7 @@ public class TimeZone {
 	public int getTimezone(){
 		double longitude = this.longitude;
 		int timezone = 0;
-		timezone = (int)longitude%15;		
+		timezone = (int)longitude/(15*6000000);		
 		return timezone;
 	}
 

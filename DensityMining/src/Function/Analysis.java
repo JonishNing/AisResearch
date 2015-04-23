@@ -13,6 +13,11 @@ import Model.Route_Segment;
 
 public class Analysis {
 	
+	/**
+	 * 处理航段数据
+	 * @param year
+	 * @param month
+	 */
 	public void AnalysisByMonth(int year , int month){
 		DataFetch df = new DataFetch();
 		DataAnalysis da = new DataAnalysis();
@@ -33,6 +38,20 @@ public class Analysis {
 			}
 			
 		}
+
+
+	}
+	
+	/**
+	 * 处理动态Ais数据
+	 * @param year
+	 * @param month
+	 */
+	public void AnalysisAisByMonth(int year , int month){
+		TimeSwitch ts = new TimeSwitch();
+		DataFetch df = new DataFetch();
+		DataAnalysis da = new DataAnalysis();
+		DatabaseConnection dc = new DatabaseConnection();
 		//获得一个月内的所有原始Ais数据记录
 		int longitude = 0;
 		int latitude = 0;
@@ -67,9 +86,7 @@ public class Analysis {
 			}
 			
 		}
-
 	}
-	
 	public static void main(String[] args){
 
 	}

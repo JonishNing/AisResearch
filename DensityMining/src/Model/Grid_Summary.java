@@ -1,42 +1,53 @@
 package Model;
 
-public class Grid_Summary{
+import java.util.Date;
 
-	private double x;
-	private double y;
+public class Grid_Summary {
+
+	private int longitude;
+	private int latitude;
 	private int time;
+	private Date date;
 
 	public Grid_Summary() {
 		super();
 	}
 
-	public Grid_Summary(double x, double y) {
+	public Grid_Summary(int latitude, int longitude) {
 		super();
-		this.x = x;
-		this.y = y;
+		this.latitude = latitude;
+		this.longitude = longitude;
 	}
 
-	public Grid_Summary(double x, double y, int time) {
+	public Grid_Summary(int latitude, int longitude, int time) {
 		super();
-		this.x = x;
-		this.y = y;
+		this.latitude = latitude;
+		this.longitude = longitude;
 		this.time = time;
 	}
 
-	public double getX() {
-		return x;
+	public Grid_Summary(int longitude, int latitude, int time, Date date) {
+		super();
+		this.longitude = longitude;
+		this.latitude = latitude;
+		this.time = time;
+		this.date = date;
+	}
+	
+	public int getLatitude() {
+		return latitude;
 	}
 
-	public void setX(double x) {
-		this.x = x;
+	public void setLatitude(int latitude) {
+		this.latitude = latitude;
 	}
 
-	public double getY() {
-		return y;
+	public int getLongitude() {
+		return longitude;
 	}
 
-	public void setY(double y) {
-		this.y = y;
+	public void setLongitude(int longitude) {
+		this.longitude = longitude;
 	}
 
 	public int getTime() {
@@ -46,22 +57,27 @@ public class Grid_Summary{
 	public void setTime(int time) {
 		this.time = time;
 	}
+	
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
+	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		long temp;
-		temp = Double.doubleToLongBits(x);
-		result = prime * result + (int) (temp ^ (temp >>> 32));
-		temp = Double.doubleToLongBits(y);
-		result = prime * result + (int) (temp ^ (temp >>> 32));
+		result = prime * result + latitude;
+		result = prime * result + longitude;
 		return result;
 	}
 
 	@Override
 	public String toString() {
-		return "Grid [x=" + x + ", y=" + y + ", time=" + time + "]";
+		return "Grid [longitude=" + longitude + ", longitude=" + latitude + ", time=" + time + "]";
 	}
 
 	@Override
@@ -73,11 +89,16 @@ public class Grid_Summary{
 		if (getClass() != obj.getClass())
 			return false;
 		Grid_Summary other = (Grid_Summary) obj;
-		if (Double.doubleToLongBits(x) != Double.doubleToLongBits(other.x))
+		if (latitude != other.latitude)
 			return false;
-		if (Double.doubleToLongBits(y) != Double.doubleToLongBits(other.y))
+		if (longitude != other.longitude)
 			return false;
 		return true;
 	}
+
+	
+	
+
+	
 
 }

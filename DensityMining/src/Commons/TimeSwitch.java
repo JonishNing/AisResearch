@@ -27,7 +27,7 @@ public class TimeSwitch {
 		int day_of_month  = BeijingTimeDate.getDate();
 		int currenthour = hour - zoneinterval;
 		int currentday = day_of_month;
-		if(currenthour >= 0 && currenthour < 24){
+		if(currenthour >= 0 && currenthour <= 24){
 			currentDate.setHours(currenthour);
 		}
 		else if(currenthour > 24){
@@ -120,7 +120,9 @@ public class TimeSwitch {
 		System.out.println("Days = " + tm.getDate());
 		int longitude = 4*600000;
 		int timezone = timeSwitch.getTimezone(longitude);
-		Date currenttm = timeSwitch.getLocalTime(tm, longitude);		
+		Date currenttm = timeSwitch.getLocalTime(tm, longitude);
+		System.out.println(tm.toString());
+		System.out.println(currenttm.toString());
 		int Gps = 1388505626;
 		int hour = timeSwitch.GPStime2Hour(Gps);
 		System.out.println(hour);

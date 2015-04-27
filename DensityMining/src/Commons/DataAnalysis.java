@@ -14,7 +14,7 @@ import Model.GridIndex;
 
 public class DataAnalysis {
 	
-	public static int GridInterval = 3000;//Grid¿ç¶È
+	public static int GridInterval = 12000;//Grid¿ç¶È
 	public static final int DAY_PERIOD = 1;//°×Ìì
 	public static final int NIGHT_PERIOD = 2;//ºÚÒ¹
 	
@@ -68,8 +68,8 @@ public class DataAnalysis {
 	 */
 	public GridIndex getGridIndex(int longitude, int latitude){
 		GridIndex gI = new GridIndex();
-		gI.setUpper_left_longitude(longitude - longitude%3000);
-		gI.setUpper_left_latitude(latitude - latitude%3000);
+		gI.setUpper_left_longitude(longitude - longitude%GridInterval);
+		gI.setUpper_left_latitude(latitude - latitude%GridInterval);
 		return gI;
 		
 	}

@@ -21,13 +21,8 @@ public class DataFetch {
 	String sql1 = "select DRGPSTIME,DRTERMINALCODE,DRLATITUDE,DRLONGITUDE from aisdynamiclog";
 	int GpsTime = 0;
 	String TerminalCode = new String();
-	int RecordType = 0;
-	int Commtype = 0;
-	int RcvTime = 0;
 	int Latitude = 0;
 	int Longitude = 0;
-	int Direction = 0;
-	int TrueHeading = 0;
 	int Speed = 0;
 	int Status = 0;
 	int rot = 0;
@@ -35,17 +30,17 @@ public class DataFetch {
 	int Ais_Source = 0;
 	
 	/**
-	 * 获取一个月内的所有原始数据
+	 * 获取一个月内某条船（MMSI）的所有原始数据
 	 * @param year
 	 * @param month
 	 * @return
 	 */
-	public ArrayList<AisDynamicRecord> getAisDynamicRecordsbyMonth(int year , int month){
+	public ArrayList<AisDynamicRecord> getAisDynamicRecordsbyMonth(int year , int month, String mmsi){
 		TimeSwitch ts = new TimeSwitch();
 		int start  = ts.getStartGPStime(year, month);
 		int end = ts.getEndGPStime(year, month);
-		sql1 = sql1 + " where DRGPSTIME>"+start+" and "+" DRGPSTIME<"+end;
-		sql1 = sql1 + " order by DRTERMINALCODE , DRGPSTIME ASC";
+		sql1 = sql1 + " where DRTERMINALCODE ='"+mmsi+"' and DRGPSTIME>"+start+" and "+" DRGPSTIME<"+end;
+		sql1 = sql1 + " order by DRGPSTIME ASC";
 		System.out.println(sql1);
 		DatabaseConnection db = new DatabaseConnection();
 		ResultSet rs=db.executeQuery(sql1);
@@ -153,7 +148,7 @@ public class DataFetch {
 	public static void main(String args[]){
 		
 		DataFetch df = new DataFetch();
-		ArrayList<AisDynamicRecord> aislist = (ArrayList<AisDynamicRecord>)df.getAisDynamicRecordsbyMonth(2013, 4);
+		ArrayList<AisDynamicRecord> aislist = (ArrayList<AisDynamicRecord>)df.getAisDynamicRecordsbyMonth(2013, 4,"413359060");
 		System.out.println("arraylist.size()="+aislist.size());
 		ArrayList<Route_Segment> rlist = (ArrayList<Route_Segment>)df.getRoute_SegmentList(2013, 4);
 		System.out.println("rlist.size()=" + rlist.size());

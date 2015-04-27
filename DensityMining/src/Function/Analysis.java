@@ -61,7 +61,7 @@ public class Analysis {
 		//获得该月的天数
 		int days_of_month = ts.getDaysofMonth(year, month);
 		String sql = "update l1_world_grids_recent set ";
-		ArrayList<AisDynamicRecord> aisList = df.getAisDynamicRecordsbyMonth(year, month);
+		ArrayList<AisDynamicRecord> aisList = df.getAisDynamicRecordsbyMonth(year, month," ");
 		for(Iterator<AisDynamicRecord> iterator = aisList.iterator(); iterator.hasNext();){
 			AisDynamicRecord ais = iterator.next();
 			longitude = ais.getDRLONGITUDE();

@@ -2,13 +2,13 @@ package Model;
 
 public class AisDynamicRecord {
 	
-	private int DRGPSTIME;	
-	private String DRTERMINALCODE;	
+	private int DRGPSTIME;	//GPS时间
+	private String DRTERMINALCODE;	//MMSI
 	private int DRRECORDTYPE;	
 	private int DRCOMMTYPE;	
 	private int DRRCVTIME;	
-	private int DRLATITUDE;	
-	private int DRLONGITUDE;	
+	private int DRLATITUDE;	//纬度
+	private int DRLONGITUDE;	//经度
 	private int DRDIRECTION;
 	private int DRTRUEHEADING;	
 	private int DRSPEED;	

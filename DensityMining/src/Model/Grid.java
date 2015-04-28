@@ -16,8 +16,8 @@ public class Grid {
 	private int Day_Vessel_Avg_Count;//一个白天出现在过这个grid里的船只的数量。
 									 //结合月份、经纬度，考虑不同地区白天时间不一样的因素
 	private int Night_Vessel_Avg_Count;//一个夜晚出现在过这个grid里的船只的数量。
-	private int Day_Vessel_Stddev_Count;//船只标准差
-	private int Night_Vessel_Stddev_Count;//船只标准差
+	private int Day_Vessel_Count;//一个月中白天所有出现在这个grid中的船只数量
+	private int Night_Vessel_Count;//一个月中夜晚所有出现在这个grid中的船只数量
 	
 	public int getUpper_Left_Longitude() {
 		return Upper_Left_Longitude;
@@ -91,18 +91,21 @@ public class Grid {
 	public void setNight_Vessel_Avg_Count(int night_Vessel_Avg_Count) {
 		Night_Vessel_Avg_Count = night_Vessel_Avg_Count;
 	}
-	public int getDay_Vessel_Stddev_Count() {
-		return Day_Vessel_Stddev_Count;
+	public int getDay_Vessel_Count() {
+		return Day_Vessel_Count;
 	}
-	public void setDay_Vessel_Stddev_Count(int day_Vessel_Stddev_Count) {
-		Day_Vessel_Stddev_Count = day_Vessel_Stddev_Count;
+	public void setDay_Vessel_Count(int day_Vessel_Count) {
+		Day_Vessel_Count = day_Vessel_Count;
 	}
-	public int getNight_Vessel_Stddev_Count() {
-		return Night_Vessel_Stddev_Count;
+	public int getNight_Vessel_Count() {
+		return Night_Vessel_Count;
 	}
-	public void setNight_Vessel_Stddev_Count(int night_Vessel_Stddev_Count) {
-		Night_Vessel_Stddev_Count = night_Vessel_Stddev_Count;
+	public void setNight_Vessel_Count(int night_Vessel_Count) {
+		Night_Vessel_Count = night_Vessel_Count;
 	}
+	
+
+	
 	
 	
 	

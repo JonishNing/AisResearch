@@ -1,20 +1,24 @@
 package Commons;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import Model.Grid;
+
+
 public class GridEstablish {
 	
 	/**
-	 * 构建全球格子
+	 * 在数据库中构建全球格子
 	 * @param interval
 	 * @param year
 	 * @param month
 	 */
-	public static void EstablishAllGrids(int interval , int year , int month){
+	public static void EstablishAllGridsInDB(int interval , int year , int month){
 		DatabaseConnection dc = new DatabaseConnection();
 		double in = ((double)interval / 600000);
-		int maxLongitude = 180 * 600000;
-		int maxLatitude = 90 * 600000;
 		String sql = "";
-		for(double i = -180.02 ; i < 180 ; i = i + in){
+		for(double i = -180 + in ; i < 180 ; i = i + in){
 			for(double j = -90 ; j < 90 ; j = j + in){
 				int UpperLeftLongitude = (int)(i * 600000);
 				int UpperLeftLatitude = (int)(j * 600000);
@@ -31,9 +35,35 @@ public class GridEstablish {
 		}
 	}
 	
+	/**
+	 * 在构建全部格子的Map
+	 * @param interval
+	 * @return
+	 */
+	public static Map<String, Grid> EstablishAllGridsInMap(int interval , int year , int month){
+		//存储每个格子的统计信息
+		Map<String, Grid> map = new HashMap<String, Grid>();
+		Grid grid = new Grid();
+		double in = ((double)interval / 600000);
+		for(double i = -180 + in ; i < 180 ; i = i + in){
+			for(double j = -90 ; j < 90 ; j = j + in){
+				int UpperLeftLongitude = (int)(i * 600000);
+				int UpperLeftLatitude = (int)(j * 600000);
+				String str = (UpperLeftLongitude + "," ) + UpperLeftLatitude;
+				grid.setUpper_Left_Longitude(UpperLeftLongitude);
+				grid.setUpper_Left_Latitude(UpperLeftLatitude);
+				grid.setLower_Right_Longitude(UpperLeftLongitude + interval);
+				grid.setLower_Right_Latitude(UpperLeftLatitude + interval);
+				grid.setYear(year);
+				grid.setMonth(month);
+				map.put(str, grid);
+			}
+		}		
+		return map;
+	}
 	public static void main(String[] args){
 		
-		GridEstablish.EstablishAllGrids(12000, 2013, 11);
+		GridEstablish.EstablishAllGridsInDB(600000, 2014, 1);
 	}
 
 }

@@ -15,16 +15,16 @@ public class TimeSwitch {
 	 * @param longitude
 	 * @return
 	 */
-	public Timestamp getLocalTime(Timestamp BeijingTimeDate ,int longitude){
-		Timestamp currentDate  = BeijingTimeDate;
+	public int getLocalTime(int GPSTime ,int longitude){		
+		Date currentDate  = GPS2Date(GPSTime);
 		if(longitude>180*600000||longitude<-180*600000){
 			System.out.println("longitude is error");
-			return null;
+			return 0;
 		}
 		int timezone = getTimezone(longitude);
 		int zoneinterval = 8 - timezone;
-		int hour = BeijingTimeDate.getHours();
-		int day_of_month  = BeijingTimeDate.getDate();
+		int hour = currentDate.getHours();
+		int day_of_month  = currentDate.getDate();
 		int currenthour = hour - zoneinterval;
 		int currentday = day_of_month;
 		if(currenthour >= 0 && currenthour <= 24){
@@ -42,8 +42,10 @@ public class TimeSwitch {
 			currentday = currentday - 1;
 			currentDate.setDate(day_of_month);
 		}				
-		return currentDate;
+		return (int)(currentDate.getTime()/1000);
 	}
+	
+
 	
 	/**
 	 * 获取时区(东正西负)
@@ -77,7 +79,13 @@ public class TimeSwitch {
 	 * @return
 	 */
 	public int getEndGPStime(int year , int month){
-		DateTime endDateTime = new DateTime(year, month+1, 1, 0, 0, 0);
+		int nextmonth = month + 1;
+		int nextyear = year;
+		if(month == 12){
+			nextmonth = 1;
+			nextyear = year + 1;
+		}
+		DateTime endDateTime = new DateTime(nextyear, nextmonth, 1, 0, 0, 0);
 		Date endDate = endDateTime.toDate();
 		int EndGPStime =(int)(endDate.getTime()/1000); 
 		return EndGPStime; 
@@ -89,10 +97,22 @@ public class TimeSwitch {
 	 * @return
 	 */
 	public int GPStime2Hour(int GPSTime){
-		DateTime dateTime = new DateTime(1970,1,1,0,0,0);
+		DateTime dateTime = new DateTime(1970,1,1,8,0,0);
 		DateTime currentdateTime = dateTime.plusSeconds(GPSTime);
 		int hour_of_day = currentdateTime.getHourOfDay();
 		return hour_of_day;
+	}
+	
+	/**
+	 * GPS转换为Date
+	 * @param GPSTime
+	 * @return
+	 */
+	public Date GPS2Date(int GPSTime){
+		DateTime dateTime = new DateTime(1970,1,1,8,0,0);
+		DateTime currentdateTime = dateTime.plusSeconds(GPSTime);
+		return currentdateTime.toDate();
+		
 	}
 	
 	/**
@@ -102,10 +122,10 @@ public class TimeSwitch {
 	 * @return
 	 */
 	public int getDaysofMonth(int year , int month){
-		int days = 0;		
-		DateTime dateTime1 = new DateTime(year, month, 1, 0, 0, 0);
-		DateTime dateTime2 = new DateTime(year, month+1, 1, 0, 0, 0);
-		days = (int)((dateTime2.toDate().getTime() - dateTime1.toDate().getTime())/(1000*60*60*24));
+		int days = 0;
+		int start = getStartGPStime(year, month);
+		int end = getEndGPStime(year, month);
+		days = (int)((end - start)/(60*60*24));
 		return days;
 	}
 	
@@ -113,35 +133,39 @@ public class TimeSwitch {
 	
 	public static void main(String[] args){
 		TimeSwitch timeSwitch = new TimeSwitch();
-		Timestamp tm = new Timestamp(115, 4, 14, 15, 30, 25, 0);
-		System.out.println("tm = " + tm.toString());
-		System.out.println("hours = " + tm.getHours());
-		System.out.println("Days = " + tm.getDate());
-		System.out.println("tm = " + tm.toString());
-		int longitude = 4*600000;
+//		Timestamp tm = new Timestamp(115, 4, 14, 15, 30, 25, 0);
+		int tm = 1388505761;
+//		System.out.println("tm = " + tm.toString());
+//		System.out.println("hours = " + tm.getHours());
+//		System.out.println("Days = " + tm.getDate());
+//		System.out.println("tm = " + tm.toString());
+		int longitude = 114*600000;
 		int timezone = timeSwitch.getTimezone(longitude);
-		System.out.println("tm = " + tm.toString());
-		Date currenttm = timeSwitch.getLocalTime(tm, longitude);
-		System.out.println("tm = " + tm.toString());
-		System.out.println(tm.toString());
-		System.out.println(currenttm.toString());
+//		System.out.println("tm = " + tm.toString());
+		int currenttm = timeSwitch.getLocalTime(tm, longitude);
+		System.out.println("tm = " + tm);
+//		System.out.println(tm.toString());
+		System.out.println("currenttm ="+currenttm +" ");
 		int Gps = 1388505626;
 		int hour = timeSwitch.GPStime2Hour(Gps);
 		System.out.println(hour);
 		try {
-			String bjtm = tm.toString();
+			String bjtm = tm + "";
 			System.out.println("北京时间："+bjtm);
-			String time = currenttm.toString();			
+			String time = currenttm + "";			
 			System.out.println(timezone+"区时间："+time);
 		} catch (Exception e) {
 			// TODO: handle exception
 			System.out.print("null timestamp!");
 		}
-		int days = timeSwitch.getDaysofMonth(2012, 2);
-		System.out.println("2013.04."+days);
-		int gpsstart = timeSwitch.getStartGPStime(2012, 3);
-		int gpsend = timeSwitch.getEndGPStime(2012, 3);
+		int days = timeSwitch.getDaysofMonth(2012, 4);
+		System.out.println("2013.04 have"+days);
+		int gpsstart = timeSwitch.getStartGPStime(2014, 1);
+		int gpsend = timeSwitch.getEndGPStime(2014, 1);
 		System.out.println("gpsstart ="+gpsstart + " gpsend = "+gpsend );
+		
+		Date date = timeSwitch.GPS2Date(1388505600);
+		System.out.println(date.toString());
 
 
 		

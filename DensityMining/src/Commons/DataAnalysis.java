@@ -14,7 +14,7 @@ import Model.GridIndex;
 
 public class DataAnalysis {
 	
-	public static int GridInterval = 12000;//Grid¿ç¶È
+	public static int GridInterval = 600000;//Grid¿ç¶È
 	public static final int DAY_PERIOD = 1;//°×Ìì
 	public static final int NIGHT_PERIOD = 2;//ºÚÒ¹
 	

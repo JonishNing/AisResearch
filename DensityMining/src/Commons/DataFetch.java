@@ -14,20 +14,14 @@ import org.joda.time.DateTime;
 import Model.AisDynamicRecord;
 import Model.Route_Segment;
 
+/**
+ * 数据获取
+ * @author NingJianQiang
+ *
+ */
+
 public class DataFetch {
-	
-	//原始Ais数据部分
-	List<AisDynamicRecord> AISDYNAMICList = new ArrayList<AisDynamicRecord>();
-	String sql1 = "select DRGPSTIME,DRTERMINALCODE,DRLATITUDE,DRLONGITUDE from aisdynamiclog";
-	int GpsTime = 0;
-	String TerminalCode = new String();
-	int Latitude = 0;
-	int Longitude = 0;
-	int Speed = 0;
-	int Status = 0;
-	int rot = 0;
-	String Message = new String();
-	int Ais_Source = 0;
+
 	
 	/**
 	 * 获取一个月内某条船（MMSI）的所有原始数据
@@ -35,8 +29,20 @@ public class DataFetch {
 	 * @param month
 	 * @return
 	 */
-	public ArrayList<AisDynamicRecord> getAisDynamicRecordsbyMonth(int year , int month, String mmsi){
+	public static ArrayList<AisDynamicRecord> getAisDynamicRecordsbyMonth(int year , int month, String mmsi){
 		TimeSwitch ts = new TimeSwitch();
+		List<AisDynamicRecord> AISDYNAMICList = new ArrayList<AisDynamicRecord>();
+		String sql1 = "select DRGPSTIME,DRTERMINALCODE,DRLATITUDE,DRLONGITUDE from aisdynamiclog";
+		int GpsTime = 0;
+		String TerminalCode = new String();
+		int Latitude = 0;
+		int Longitude = 0;
+//		int Speed = 0;
+//		int Status = 0;
+//		int rot = 0;
+//		String Message = new String();
+//		int Ais_Source = 0;
+		
 		int start  = ts.getStartGPStime(year, month);
 		int end = ts.getEndGPStime(year, month);
 		sql1 = sql1 + " where DRTERMINALCODE ='"+mmsi+"' and DRGPSTIME>"+start+" and "+" DRGPSTIME<"+end;
@@ -148,10 +154,10 @@ public class DataFetch {
 	public static void main(String args[]){
 		
 		DataFetch df = new DataFetch();
-		ArrayList<AisDynamicRecord> aislist = (ArrayList<AisDynamicRecord>)df.getAisDynamicRecordsbyMonth(2013, 4,"413359060");
+		ArrayList<AisDynamicRecord> aislist = (ArrayList<AisDynamicRecord>)df.getAisDynamicRecordsbyMonth(2014, 1,"412593000");
 		System.out.println("arraylist.size()="+aislist.size());
-		ArrayList<Route_Segment> rlist = (ArrayList<Route_Segment>)df.getRoute_SegmentList(2013, 4);
-		System.out.println("rlist.size()=" + rlist.size());
+//		ArrayList<Route_Segment> rlist = (ArrayList<Route_Segment>)df.getRoute_SegmentList(2013, 4);
+//		System.out.println("rlist.size()=" + rlist.size());
 		
 	}
 }

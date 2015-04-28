@@ -33,7 +33,7 @@ public class GridEstablish {
 	
 	public static void main(String[] args){
 		
-		GridEstablish.EstablishAllGrids(800000, 2013, 11);
+		GridEstablish.EstablishAllGrids(12000, 2013, 11);
 	}
 
 }

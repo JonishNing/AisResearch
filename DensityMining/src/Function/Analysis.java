@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap.KeySetView;
 
 import Commons.DataAnalysis;
 import Commons.DataFetch;
@@ -29,8 +28,6 @@ public class Analysis {
 	public static Map<String, Grid> AnalysisAisByMonth(int year , int month ,ArrayList<AisDynamicRecord> aisList , Map<String, Grid> map){
 		TimeSwitch ts = new TimeSwitch();
 		DataAnalysis da = new DataAnalysis();
-		DatabaseConnection dc = new DatabaseConnection();
-		Map<String, Grid> map0 = map;
 		//获得一个月内的所有原始Ais数据记录
 		int longitude = 0;
 		int latitude = 0;
@@ -46,12 +43,12 @@ public class Analysis {
 			int UL_Longitude = gi.getUpper_left_longitude();
 			int UL_Latitude = gi.getUpper_left_latitude();
 			String str = UL_Longitude + "," + UL_Latitude;
-			for(String s: map0.keySet()){
+			for(String s: map.keySet()){
 				if(str.equals(s)){
-					Grid grid = map0.get(s);
+					Grid grid = map.get(s);
 					int count = grid.getDynamicDataCout();
 					grid.setDynamicDataCout(++count);
-					map0.put(s, grid);
+					map.put(s, grid);
 					break;
 				}
 			}
@@ -60,7 +57,7 @@ public class Analysis {
 			period = da.judge_dayornight(longitude, latitude, GPSTime);			
 			
 		}
-		return map0;
+		return map;
 	}
 
 	

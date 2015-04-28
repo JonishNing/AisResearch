@@ -1,15 +1,8 @@
 package Commons;
 
 
-
-import java.sql.ResultSet;
-
 import Commons.TimeSwitch;
 
-import org.omg.CORBA.PUBLIC_MEMBER;
-
-import Model.AisRecord;
-import Model.Grid;
 import Model.GridIndex;
 
 public class DataAnalysis {

@@ -30,12 +30,12 @@ public class Get_Result {
 			//获取数据
 			ArrayList<AisDynamicRecord> aisList = DataFetch.getAisDynamicRecordsbyMonth(year, month, MMSI[i]);
 		
-			//处理原始数据
-			Analysis.AnalysisAisByMonth(year, month,aisList,map);
+			//原始处理
+			map = Analysis.AnalysisAisByMonth(year, month,aisList,map);
 		}
 
-		
-		
+		//将结果插入数据库
+		UpdateDB.update2DB(map);
 		
 	}
 }

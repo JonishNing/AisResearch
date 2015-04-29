@@ -61,7 +61,7 @@ public class GridCountFunction {
 			int xx = (int)(x / 3000 ) * 3000;
 			Grid_Summary.setLongitude(xx);                                                                                     
 			Grid_Summary.setLatitude(y);
-			Grid_Summary.setDate(date);
+//			Grid_Summary.setDate(date);
 			list.add(Grid_Summary);
 			set.add(Grid_Summary);
 		}

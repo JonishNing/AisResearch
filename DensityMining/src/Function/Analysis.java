@@ -52,9 +52,7 @@ public class Analysis {
 					break;
 				}
 			}
-			
-			GPSTime = ais.getDRGPSTIME();
-			period = da.judge_dayornight(longitude, latitude, GPSTime);			
+						
 			
 		}
 		return map;

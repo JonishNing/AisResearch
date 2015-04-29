@@ -7,7 +7,8 @@ public class Grid_Summary {
 	private int longitude;
 	private int latitude;
 	private int time;
-	private Date date;
+	private int GPSTime;
+	//private Date date;
 
 	public Grid_Summary() {
 		super();
@@ -26,12 +27,12 @@ public class Grid_Summary {
 		this.time = time;
 	}
 
-	public Grid_Summary(int longitude, int latitude, int time, Date date) {
+	public Grid_Summary(int longitude, int latitude, int time, int GPSTime) {
 		super();
 		this.longitude = longitude;
 		this.latitude = latitude;
 		this.time = time;
-		this.date = date;
+		this.GPSTime = GPSTime;
 	}
 	
 	public int getLatitude() {
@@ -58,12 +59,12 @@ public class Grid_Summary {
 		this.time = time;
 	}
 	
-	public Date getDate() {
-		return date;
+	public int getGPSTime() {
+		return GPSTime;
 	}
 
-	public void setDate(Date date) {
-		this.date = date;
+	public void setGPSTime(int GPSTime) {
+		this.GPSTime = GPSTime;
 	}
 
 	@Override

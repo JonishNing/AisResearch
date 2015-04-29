@@ -62,7 +62,7 @@ public class DataAnalysis {
 	public GridIndex getGridIndex(int longitude, int latitude){
 		GridIndex gI = new GridIndex();
 		gI.setUpper_left_longitude(longitude - longitude%GridInterval);
-		gI.setUpper_left_latitude(latitude - latitude%GridInterval);
+		gI.setUpper_left_latitude(latitude + latitude%GridInterval);
 		return gI;
 		
 	}

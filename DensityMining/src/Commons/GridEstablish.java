@@ -53,7 +53,7 @@ public class GridEstablish {
 				grid.setUpper_Left_Longitude(UpperLeftLongitude);
 				grid.setUpper_Left_Latitude(UpperLeftLatitude);
 				grid.setLower_Right_Longitude(UpperLeftLongitude + interval);
-				grid.setLower_Right_Latitude(UpperLeftLatitude + interval);
+				grid.setLower_Right_Latitude(UpperLeftLatitude - interval);
 				grid.setYear(year);
 				grid.setMonth(month);
 				map.put(str, grid);

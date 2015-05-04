@@ -40,7 +40,7 @@ public class DataAnalysis {
 	 * @param GPSTime
 	 * @return
 	 */
-	public int judge_dayornight(int longitude , int latitude, int GPSTime){
+	public static int judge_dayornight(int longitude , int latitude, int GPSTime){
 		int period = 0;
 		TimeSwitch ts = new TimeSwitch();
 		int hour =  ts.GPStime2Hour(GPSTime);
@@ -62,7 +62,7 @@ public class DataAnalysis {
 	public GridIndex getGridIndex(int longitude, int latitude){
 		GridIndex gI = new GridIndex();
 		gI.setUpper_left_longitude(longitude - longitude%GridInterval);
-		gI.setUpper_left_latitude(latitude + latitude%GridInterval);
+		gI.setUpper_left_latitude(latitude - latitude%GridInterval);
 		return gI;
 		
 	}

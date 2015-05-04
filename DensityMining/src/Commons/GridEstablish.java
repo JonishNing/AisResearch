@@ -29,7 +29,7 @@ public class GridEstablish {
 					+ "Sigama2_AIS_Update_Interval,Day_Vessel_Avg_Count,Night_Vessel_Avg_Count,Udt_Time)"
 					+ "values(" + UpperLeftLongitude + "," + UpperLeftLatitude + "," 
 					+ LowerRightLongitude + "," + LowerRightLatitude + ","+ year + "," + month + "," + "0,0,0,0,0,0,now())";
-				System.out.println(sql);
+//				System.out.println(sql);
 				dc.executeUpdate(sql);
 			}
 		}

@@ -1,5 +1,7 @@
 package Function;
 
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.Map;
 
 import Commons.DatabaseConnection;
@@ -21,7 +23,7 @@ public class UpdateDB {
 			int Night_Vessel_Avg_Count = g.getNight_Vessel_Avg_Count();
 			String sql = "update l1_world_grids_latest set CrossingTimeSum=" + CrosingTimeSum + " , DynamicDataCout=" + DynamicDataCout
 						+ " , Mean_AIS_Update_Interval=" + Mean_AIS_Update_Interval + " , Sigama2_AIS_Update_Interval=" + Sigama2_AIS_Update_Interval
-						+ " , Day_Vessel_Avg_Count=" +  Day_Vessel_Avg_Count + " , Night_Vessel_Avg_Count=" + Night_Vessel_Avg_Count;
+						+ " , Day_Vessel_Avg_Count=" +  Day_Vessel_Avg_Count + " , Night_Vessel_Avg_Count=" + Night_Vessel_Avg_Count + ", Udt_Time" + new Date();
 			sql = sql + "where Upper_Left_Longitude=" + Upper_Left_Longitude + "and Upper_Left_Latitude=" + Upper_Left_Latitude;
 			dc.executeUpdate(sql);
 		}

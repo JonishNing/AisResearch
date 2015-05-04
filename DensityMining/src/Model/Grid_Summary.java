@@ -1,38 +1,45 @@
 package Model;
 
+import java.math.BigInteger;
 import java.util.Date;
+
+import Commons.DataAnalysis;
+import Commons.TimeSwitch;
 
 public class Grid_Summary {
 
 	private int longitude;
 	private int latitude;
 	private int time;
-	private int GPSTime;
+	//private BigInteger GPSTime;
+	private int period;
 	//private Date date;
 
 	public Grid_Summary() {
 		super();
 	}
 
-	public Grid_Summary(int latitude, int longitude) {
+	public Grid_Summary( int longitude,int latitude) {
 		super();
 		this.latitude = latitude;
 		this.longitude = longitude;
 	}
 
-	public Grid_Summary(int latitude, int longitude, int time) {
-		super();
-		this.latitude = latitude;
-		this.longitude = longitude;
-		this.time = time;
-	}
 
-	public Grid_Summary(int longitude, int latitude, int time, int GPSTime) {
+	public Grid_Summary(int longitude, int latitude, int time) {
 		super();
 		this.longitude = longitude;
 		this.latitude = latitude;
 		this.time = time;
-		this.GPSTime = GPSTime;
+		
+	}
+	public Grid_Summary(int longitude, int latitude, int time,int period) {
+		super();
+		this.longitude = longitude;
+		this.latitude = latitude;
+		this.time = time;
+		this.period=period;
+		
 	}
 	
 	public int getLatitude() {
@@ -50,22 +57,34 @@ public class Grid_Summary {
 	public void setLongitude(int longitude) {
 		this.longitude = longitude;
 	}
-
 	public int getTime() {
 		return time;
 	}
-
 	public void setTime(int time) {
 		this.time = time;
 	}
-	
-	public int getGPSTime() {
-		return GPSTime;
+	public int getPeriod() {
+		return period;
 	}
 
-	public void setGPSTime(int GPSTime) {
-		this.GPSTime = GPSTime;
+	public void setPeriod(int period) {
+		this.period = period;
 	}
+	
+	
+//	public int getGPSTime() {
+//		return GPSTime;
+//	}
+//
+//	public void setGPSTime(int GPSTime) {
+//		this.GPSTime = GPSTime;
+//	}
+//	public int getPeriod(Grid_Summary Summary,TimeSwitch Switch,DataAnalysis Analysis)
+//		{
+//		int period;
+//		period=Analysis.judge_dayornight(Summary.getLongitude(), Summary.getLatitude(), Switch.getLocalTime(Summary.getGPSTime(), Summary.getLongitude()));
+//		return period;
+//		}
 
 	@Override
 	public int hashCode() {
@@ -78,7 +97,7 @@ public class Grid_Summary {
 
 	@Override
 	public String toString() {
-		return "Grid [longitude=" + longitude + ", longitude=" + latitude + ", time=" + time + "]";
+		return "[longitude=" + longitude + ", latitude=" + latitude + ", time=" + time + ",period="+period+"]";
 	}
 
 	@Override

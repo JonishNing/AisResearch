@@ -16,6 +16,17 @@ public class AisDynamicRecord {
 	private int DRROT;	
 	private String DRMESSAGE;	
 	private int AIS_SOURCE;
+	
+	public AisDynamicRecord()
+	{
+	}
+	public AisDynamicRecord(int DRGPSTIME, int DRLATITUDE,int DRLONGITUDE)
+	{
+		this.DRGPSTIME=DRGPSTIME;
+		this.DRLATITUDE=DRLATITUDE;
+		this.DRLONGITUDE=DRLONGITUDE;
+		
+	}
 	public int getDRGPSTIME() {
 		return DRGPSTIME;
 	}

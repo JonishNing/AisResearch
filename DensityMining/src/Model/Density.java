@@ -1,7 +1,6 @@
 package Model;
 
 public class Density {
-	
 	private int Longitude;
 	private int Latitude;
 	private int Day_Vessel_Count;

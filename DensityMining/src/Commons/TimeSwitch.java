@@ -15,7 +15,7 @@ public class TimeSwitch {
 	 * @param longitude
 	 * @return
 	 */
-	public int getLocalTime(int GPSTime ,int longitude){		
+	public static int getLocalTime(int GPSTime ,int longitude){		
 		Date currentDate  = GPS2Date(GPSTime);
 		if(longitude>180*600000||longitude<-180*600000){
 			System.out.println("longitude is error");
@@ -52,7 +52,7 @@ public class TimeSwitch {
 	 * @param longitude
 	 * @return
 	 */
-	public int getTimezone(int longitude){
+	public static int getTimezone(int longitude){
 		int timezone = 0;
 		//四舍五入求时区
 		timezone = Integer.parseInt(new java.text.DecimalFormat("0").format(longitude/600000/15));		
@@ -108,7 +108,7 @@ public class TimeSwitch {
 	 * @param GPSTime
 	 * @return
 	 */
-	public Date GPS2Date(int GPSTime){
+	public static Date GPS2Date(int GPSTime){
 		DateTime dateTime = new DateTime(1970,1,1,8,0,0);
 		DateTime currentdateTime = dateTime.plusSeconds(GPSTime);
 		return currentdateTime.toDate();
@@ -146,7 +146,7 @@ public class TimeSwitch {
 		System.out.println("tm = " + tm);
 //		System.out.println(tm.toString());
 		System.out.println("currenttm ="+currenttm +" ");
-		int Gps = 1388505626;
+		int Gps = 1388512268;
 		int hour = timeSwitch.GPStime2Hour(Gps);
 		System.out.println(hour);
 		try {
